@@ -5,11 +5,16 @@ import api from "@/api";
 import { LoginType } from "@/types/api";
 import storage from "@/utils/storage";
 import { message } from "@/utils/AntdComp";
+import { useShallow } from "zustand/react/shallow";
+import { useStore } from "@/store";
 
 const Login = () => {
+  const updateToken = useStore(useShallow((state) => state.updateToken));
+
   const onFinish: FormProps<LoginType.params>["onFinish"] = async (values) => {
     const data = await api.login(values);
     storage.set("token", data);
+    updateToken(data);
     message.success("Login success");
     setTimeout(() => {
       const params = new URLSearchParams(location.search);

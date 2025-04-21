@@ -1,13 +1,28 @@
 import { Navigate, useRoutes } from "react-router-dom";
-import Welcome from "@/views/Welcome";
+import Welcome from "@/views/welcome";
 import Login from "@/views/login";
 import UnAuthorize from "@/views/UnAuthorize";
 import NotFound from "@/views/NotFound";
+import Layout from "@/layout";
+import Workbench from "@/views/workbench";
 
 const router = [
   {
+    element: <Layout />,
+    children: [
+      {
+        path: "/welcome",
+        element: <Welcome />,
+      },
+      {
+        path: "/workbench",
+        element: <Workbench />,
+      },
+    ],
+  },
+  {
     path: "/",
-    element: <Welcome />,
+    element: <Navigate to="/welcome" />,
   },
   {
     path: "/login",

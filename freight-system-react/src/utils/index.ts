@@ -75,3 +75,9 @@ export const formatWeek = (date: Date = new Date()) => {
     day: "numeric",
   }).format(date);
 };
+
+export const formatState = (state: number) => {
+  if (state === 1) return "Employed";
+  if (state === 2) return "Trial Period";
+  if (state === 3) return "Resign";
+};

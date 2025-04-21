@@ -15,6 +15,9 @@ export const instance = axios.create({
   timeout: 5000,
   timeoutErrorMessage: "Request Timeout, Please try again later.",
   withCredentials: true,
+  headers: {
+    icode: "A7EEA094EAA44AF4",
+  },
 });
 
 instance.interceptors.request.use(
@@ -24,7 +27,6 @@ instance.interceptors.request.use(
     if (token) {
       config.headers.Authorization = `Token::${token}`;
     }
-    config.headers.icode = "B815F86524423DB0";
 
     return { ...config };
   },
