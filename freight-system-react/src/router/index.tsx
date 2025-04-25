@@ -1,14 +1,20 @@
-import { Navigate, useRoutes } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import Welcome from "@/views/welcome";
 import Login from "@/views/login";
 import UnAuthorize from "@/views/UnAuthorize";
 import NotFound from "@/views/NotFound";
 import Layout from "@/layout";
 import Workbench from "@/views/workbench";
+import UserList from "@/views/system/user/user-ahooks";
+import Department from "@/views/system/dept";
+import Menu from "@/views/system/menu";
+import AuthLoader from "./AuthLoader";
 
-const router = [
+const routes = [
   {
+    id: "layout",
     element: <Layout />,
+    loader: AuthLoader,
     children: [
       {
         path: "/welcome",
@@ -17,6 +23,18 @@ const router = [
       {
         path: "/workbench",
         element: <Workbench />,
+      },
+      {
+        path: "/userlist",
+        element: <UserList />,
+      },
+      {
+        path: "/deptlist",
+        element: <Department />,
+      },
+      {
+        path: "/menulist",
+        element: <Menu />,
       },
     ],
   },
@@ -42,6 +60,4 @@ const router = [
   },
 ];
 
-const Router = () => useRoutes(router);
-
-export default Router;
+export default routes;

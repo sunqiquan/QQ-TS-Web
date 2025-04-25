@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios, { AxiosError } from "axios";
 import { showLoading, hideLoading } from "@/utils/loading";
 import storage from "@/utils/storage";
@@ -25,7 +26,7 @@ instance.interceptors.request.use(
     showLoading();
     const token = storage.get("token");
     if (token) {
-      config.headers.Authorization = `Token::${token}`;
+      config.headers.Authorization = `Bearer ${token}`;
     }
 
     return { ...config };
@@ -50,8 +51,8 @@ instance.interceptors.response.use(
       // use lock mock data
       const index = res.request.responseURL.indexOf("/api");
       if (index !== -1) {
-        const key = res.request.responseURL.substring(index + 5);
-        return mockdata(key).data;
+        const key = res.request.responseURL.substring(index + 4);
+        return getMockData(key);
       } else {
         message.error(data.msg);
         storage.remove("token");
@@ -70,10 +71,17 @@ instance.interceptors.response.use(
   },
   (error) => {
     hideLoading();
-    message.error(error.message);
-    return Promise.reject(error.message);
+    return getMockData(error.config.url);
   }
 );
+
+const getMockData = (url: string): any => {
+  const index = url.indexOf("?");
+  if (index !== -1) {
+    url = url.substring(0, index);
+  }
+  return mockdata(url).data;
+};
 
 export default {
   get<T>(

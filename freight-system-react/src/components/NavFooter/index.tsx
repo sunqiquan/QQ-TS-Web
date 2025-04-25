@@ -20,7 +20,7 @@ const NavFooter = () => {
           target="_blank"
           rel="noreferrer"
         >
-          MDN Web Docs
+          MDN
         </a>
         <span className="gutter">|</span>
         <a href="https://www.iconfont.cn/" target="_blank" rel="noreferrer">

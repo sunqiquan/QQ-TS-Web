@@ -30,7 +30,7 @@ export const useStore = create<UseStore>((set) => ({
     job: "",
     role: 0,
     roleList: "",
-    createId: 0,
+    createTime: "",
     deptName: "",
     userImg: "",
   },

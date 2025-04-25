@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Card, Button, Descriptions, DescriptionsProps } from "antd";
 import { useStore } from "@/store";
 import { useShallow } from "zustand/react/shallow";

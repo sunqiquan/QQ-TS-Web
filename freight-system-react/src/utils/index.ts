@@ -2,6 +2,18 @@
  * utility functions encapsulated
  */
 
+import { Menu } from "@/types/api";
+
+export const getMenuPath = (list: Menu.MenuItem[]): string[] => {
+  return list.reduce((result: string[], item: Menu.MenuItem) => {
+    return result.concat(
+      Array.isArray(item.children) && !item.buttons
+        ? getMenuPath(item.children)
+        : item.path + ""
+    );
+  }, []);
+};
+
 export const formatCurrency = (num: number) => {
   return new Intl.NumberFormat("zh-CN", {
     style: "currency",

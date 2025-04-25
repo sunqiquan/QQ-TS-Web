@@ -1,17 +1,16 @@
-import { BrowserRouter } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ConfigProvider, App as AntdApp } from "antd";
 import AntdComp from "@/utils/AntdComp";
-import Router from "@/router";
-import "@/App.css";
+import routs from "@/router";
+import "@/App.less";
 
 const App = () => {
+  const Router = createBrowserRouter(routs);
   return (
     <ConfigProvider theme={{ token: { colorPrimary: "#ed6c00" } }}>
       <AntdApp>
         <AntdComp />
-        <BrowserRouter>
-          <Router />
-        </BrowserRouter>
+        <RouterProvider router={Router} />
       </AntdApp>
     </ConfigProvider>
   );

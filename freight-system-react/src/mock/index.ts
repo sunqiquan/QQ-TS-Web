@@ -4,13 +4,13 @@
  */
 
 const data: any = {
-  "user/login": {
+  "/users/login": {
     code: 0,
     data: "EVJhDGCIOIJIUZIINIISINRSCCI6IKDXVCI9.EVJKYXRAIID7INVZZXIJDWCIUIJOCHRWCZOVL3DVCYSNOGLWYXLVYMDLYSRZLmNVOSVDXNWD3JBYWWamtGL2TFnzwvBweVJovultbmlwc2xaZldobkpldVoucGSnIiwiX2LKIiOINiNIYZMMWIZMDA3MZJiMiC2OTAMMAZIIWIdXNICKIKIIOXMDAWMDE3LCI1C2VVTmF+ZSI6IIRLc30iLCJ1c2vyRW1hawwiOiIsdWN5OGIhCMUY29tIIWIZGWWdELKIjOININIYZMXYWUZMDA3MzJjMic20TdmMWY@Iiwic3RhdGUi0jIsInJvbGU1OjEsInJvbGWaXNBIjOINjNIYZMODCZMDA3MZJjMjC2OTdMWU2IIWIY3JIYXRISWOIOjB9LCIPYXO1OjE20DQWNTIBMDISIMV4CI6MTY4NDA3NDAWOHB.EyfVMYrxwoIejkokfcJbjZlY83DRCFfSYclgC40TOLU",
     msg: "success",
   },
 
-  "user/getUserInfo": {
+  "/users/getUserInfo": {
     code: 0,
     data: {
       _id: "63bc321b300732c27697f203",
@@ -23,14 +23,178 @@ const data: any = {
       job: "TestJob",
       role: 1,
       roleList: "63bc3187300732c27697f1e6",
-      createId: 0,
+      createTime: "2023-01-01 00:00:00",
       deptName: "TestDpt",
       userImg: "/imgs/headimg.svg",
     },
     msg: "success",
   },
 
-  "order/workbench/getReportData": {
+  "/users/list": {
+    code: 0,
+    data: {
+      list: [
+        {
+          _id: "63bc321b300732c27697f203",
+          userId: 1000017,
+          userName: "Sean",
+          userEmail: "user@email.com",
+          deptId: "63bc31ae300732c27697f1f4",
+          state: 1,
+          mobile: "13888888888",
+          job: "TestJob",
+          role: 1,
+          roleList: "63bc3187300732c27697f1e6",
+          createTime: "2025-04-21 23:06:00",
+          deptName: "TestDpt",
+          userImg: "/imgs/headimg.svg",
+        },
+        {
+          _id: "63bc321b300732c27697f203",
+          userId: 1000018,
+          userName: "Sunqq",
+          userEmail: "user@email.com",
+          deptId: "63bc31ae300732c27697f1f4",
+          state: 1,
+          mobile: "13888888888",
+          job: "TestJob",
+          role: 1,
+          roleList: "63bc3187300732c27697f1e6",
+          createTime: "2025-04-22 18:22:00",
+          deptName: "TestDpt",
+          userImg: "/imgs/headimg.svg",
+        },
+        {
+          _id: "63bc321b300732c27697f203",
+          userId: 1000019,
+          userName: "Sunqq",
+          userEmail: "user@email.com",
+          deptId: "63bc31ae300732c27697f1f4",
+          state: 1,
+          mobile: "13888888888",
+          job: "TestJob",
+          role: 1,
+          roleList: "63bc3187300732c27697f1e6",
+          createTime: "2025-04-22 18:22:00",
+          deptName: "TestDpt",
+          userImg: "/imgs/headimg.svg",
+        },
+        {
+          _id: "63bc321b300732c27697f203",
+          userId: 1000020,
+          userName: "Sunqq",
+          userEmail: "user@email.com",
+          deptId: "63bc31ae300732c27697f1f4",
+          state: 1,
+          mobile: "13888888888",
+          job: "TestJob",
+          role: 1,
+          roleList: "63bc3187300732c27697f1e6",
+          createTime: "2025-04-22 18:22:00",
+          deptName: "TestDpt",
+          userImg: "/imgs/headimg.svg",
+        },
+        {
+          _id: "63bc321b300732c27697f203",
+          userId: 1000021,
+          userName: "Sunqq",
+          userEmail: "user@email.com",
+          deptId: "63bc31ae300732c27697f1f4",
+          state: 1,
+          mobile: "13888888888",
+          job: "TestJob",
+          role: 1,
+          roleList: "63bc3187300732c27697f1e6",
+          createTime: "2025-04-22 18:22:00",
+          deptName: "TestDpt",
+          userImg: "/imgs/headimg.svg",
+        },
+        {
+          _id: "63bc321b300732c27697f203",
+          userId: 1000022,
+          userName: "Sunqq",
+          userEmail: "user@email.com",
+          deptId: "63bc31ae300732c27697f1f4",
+          state: 1,
+          mobile: "13888888888",
+          job: "TestJob",
+          role: 1,
+          roleList: "63bc3187300732c27697f1e6",
+          createTime: "2025-04-22 18:22:00",
+          deptName: "TestDpt",
+          userImg: "/imgs/headimg.svg",
+        },
+        {
+          _id: "63bc321b300732c27697f203",
+          userId: 1000023,
+          userName: "Sunqq",
+          userEmail: "user@email.com",
+          deptId: "63bc31ae300732c27697f1f4",
+          state: 1,
+          mobile: "13888888888",
+          job: "TestJob",
+          role: 1,
+          roleList: "63bc3187300732c27697f1e6",
+          createTime: "2025-04-22 18:22:00",
+          deptName: "TestDpt",
+          userImg: "/imgs/headimg.svg",
+        },
+        {
+          _id: "63bc321b300732c27697f203",
+          userId: 1000024,
+          userName: "Sunqq",
+          userEmail: "user@email.com",
+          deptId: "63bc31ae300732c27697f1f4",
+          state: 1,
+          mobile: "13888888888",
+          job: "TestJob",
+          role: 1,
+          roleList: "63bc3187300732c27697f1e6",
+          createTime: "2025-04-22 18:22:00",
+          deptName: "TestDpt",
+          userImg: "/imgs/headimg.svg",
+        },
+        {
+          _id: "63bc321b300732c27697f203",
+          userId: 1000025,
+          userName: "Sunqq",
+          userEmail: "user@email.com",
+          deptId: "63bc31ae300732c27697f1f4",
+          state: 1,
+          mobile: "13888888888",
+          job: "TestJob",
+          role: 1,
+          roleList: "63bc3187300732c27697f1e6",
+          createTime: "2025-04-22 18:22:00",
+          deptName: "TestDpt",
+          userImg: "/imgs/headimg.svg",
+        },
+        {
+          _id: "63bc321b300732c27697f203",
+          userId: 1000026,
+          userName: "Sunqq",
+          userEmail: "user@email.com",
+          deptId: "63bc31ae300732c27697f1f4",
+          state: 1,
+          mobile: "13888888888",
+          job: "TestJob",
+          role: 1,
+          roleList: "63bc3187300732c27697f1e6",
+          createTime: "2025-04-22 18:22:00",
+          deptName: "TestDpt",
+          userImg: "/imgs/headimg.svg",
+        },
+      ],
+      page: {
+        current: 1,
+        pageSize: 10,
+        total: 100,
+      },
+    },
+    msg: "success",
+  },
+
+  "/order/workbench/getReportData": {
     code: 0,
     data: {
       driverCount: 278600,
@@ -41,7 +205,7 @@ const data: any = {
     msg: "success",
   },
 
-  "order/workbench/getLineChartData": {
+  "/order/workbench/getLineChartData": {
     code: 0,
     data: {
       label: [
@@ -67,7 +231,7 @@ const data: any = {
     msg: "success",
   },
 
-  "order/workbench/getPieAgeChartData": {
+  "/order/workbench/getPieAgeChartData": {
     code: 0,
     data: [
       { value: 335, name: "Under 18" },
@@ -81,7 +245,7 @@ const data: any = {
     msg: "success",
   },
 
-  "order/workbench/getPieCityChartData": {
+  "/order/workbench/getPieCityChartData": {
     code: 0,
     data: [
       { value: 235, name: "Shanghai" },
@@ -95,7 +259,7 @@ const data: any = {
     msg: "success",
   },
 
-  "order/workbench/getRadarChartData": {
+  "/order/workbench/getRadarChartData": {
     code: 0,
     data: {
       indicator: [
@@ -110,10 +274,128 @@ const data: any = {
     },
     msg: "success",
   },
+
+  "/dept/list": {
+    code: 0,
+    data: [
+      {
+        _id: "63bc31ae300732c27697f1f4",
+        createTime: "2025-04-22 18:22:00",
+        deptName: "TestDpt",
+        parentId: "63bc31ae300732c27697f1f4",
+        updateTime: "2025-04-22 18:22:00",
+        userName: "TestUser",
+        children: [
+          {
+            _id: "63bc31ae300732c27697f1f5",
+            createTime: "2025-04-22 18:22:00",
+            deptName: "TestDpt",
+            parentId: "63bc31ae300732c27697f1f4",
+            updateTime: "2025-04-22 18:22:00",
+            userName: "TestUser1",
+          },
+        ],
+      },
+    ],
+    msg: "success",
+  },
+
+  "/users/all/list": {
+    code: 0,
+    data: [
+      {
+        _id: "63bc321b300732c27697f203",
+        userId: 1000017,
+        userName: "Sean",
+        userEmail: "user@email.com",
+        deptId: "63bc31ae300732c27697f1f4",
+        state: 1,
+        mobile: "13888888888",
+        job: "TestJob",
+        role: 1,
+        roleList: "63bc3187300732c27697f1e6",
+        createTime: "2025-04-21 23:06:00",
+        deptName: "TestDpt",
+        userImg: "/imgs/headimg.svg",
+      },
+      {
+        _id: "63bc321b300732c27697f203",
+        userId: 1000018,
+        userName: "Sunqq",
+        userEmail: "user@email.com",
+        deptId: "63bc31ae300732c27697f1f4",
+        state: 1,
+        mobile: "13888888888",
+        job: "TestJob",
+        role: 1,
+        roleList: "63bc3187300732c27697f1e6",
+        createTime: "2025-04-22 18:22:00",
+        deptName: "TestDpt",
+        userImg: "/imgs/headimg.svg",
+      },
+    ],
+    msg: "success",
+  },
+
+  "/menu/list": {
+    code: 0,
+    data: [
+      {
+        _id: "63bc31ae300732c27697f1f4",
+        createTime: "2025-04-22 18:22:00",
+        menuName: "TestMenu",
+        parentId: "63bc31ae300732c27697f1f4",
+        updateTime: "2025-04-22 18:22:00",
+        menuUrl: "test",
+        menuIcon: "test",
+        menuState: 1,
+        menuType: 1,
+        menuCode: "test",
+        children: [
+          {
+            _id: "63bc31ae300732c27697f1f5",
+            createTime: "2025-04-22 18:22:00",
+            menuName: "TestMenu",
+            parentId: "63bc31ae300732c27697f1f4",
+            updateTime: "2025-04-22 18:22:00",
+            menuUrl: "test",
+            menuIcon: "test",
+            menuState: 1,
+            menuType: 1,
+            menuCode: "test",
+          },
+        ],
+      },
+    ],
+    msg: "success",
+  },
+
+  "/users/getPermissionList": {
+    code: 0,
+    data: {
+      buttonList: ["test"],
+      menuList: [
+        {
+          _id: "63bc31ae300732c27697f1f4",
+          createTime: "2025-04-22 18:22:00",
+          menuName: "TestMenu",
+          parentId: "63bc31ae300732c27697f1f4",
+          updateTime: "2025-04-22 18:22:00",
+          menuUrl: "test",
+          menuIcon: "test",
+          menuState: 1,
+          menuType: 1,
+          menuCode: "test",
+        },
+      ],
+    },
+    msg: "success",
+  },
 };
 
 const getData = (key: string): any => {
-  return data[key];
+  if (data[key] !== undefined) return data[key];
+  return {};
 };
 
 export default getData;

@@ -1,8 +1,10 @@
 import { Menu } from "antd";
 import {
   DesktopOutlined,
+  ProfileOutlined,
   SettingOutlined,
   UserOutlined,
+  MenuOutlined,
 } from "@ant-design/icons";
 import styles from "./index.module.less";
 import { useNavigate } from "react-router-dom";
@@ -31,6 +33,25 @@ const SideMenu = () => {
           key: "user",
           label: "User Manage",
           icon: <UserOutlined />,
+          onClick: () => {
+            navigate("/userlist");
+          },
+        },
+        {
+          key: "dept",
+          label: "Dept Manage",
+          icon: <ProfileOutlined />,
+          onClick: () => {
+            navigate("/deptlist");
+          },
+        },
+        {
+          key: "menu",
+          label: "Menu Manage",
+          icon: <MenuOutlined />,
+          onClick: () => {
+            navigate("/menulist");
+          },
         },
       ],
     },
