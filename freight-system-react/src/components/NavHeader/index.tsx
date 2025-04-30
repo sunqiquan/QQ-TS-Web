@@ -1,28 +1,30 @@
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
-import { Breadcrumb, Dropdown, Switch } from "antd";
+import { Dropdown, Switch } from "antd";
 import type { MenuProps } from "antd";
 import styles from "@/components/NavHeader/index.module.less";
 import { useShallow } from "zustand/react/shallow";
 import { useStore } from "@/store";
 import storage from "@/utils/storage";
+import BreadCrumb from "./BreadCrumb";
+import { useEffect } from "react";
 
 const NavHeader = () => {
-  const { collapsed, updateCollapsed, userInfo } = useStore(
-    useShallow((state) => ({
-      collapsed: state.collapsed,
-      updateCollapsed: state.updateCollapsed,
-      userInfo: state.userInfo,
-    }))
-  );
+  const { isDark, updateTheme, collapsed, updateCollapsed, userInfo } =
+    useStore(
+      useShallow((state) => ({
+        isDark: state.isDark,
+        updateTheme: state.updateTheme,
 
-  const breadList = [
-    {
-      title: "Home",
-    },
-    {
-      title: "Workbench",
-    },
-  ];
+        collapsed: state.collapsed,
+        updateCollapsed: state.updateCollapsed,
+
+        userInfo: state.userInfo,
+      }))
+    );
+
+  useEffect(() => {
+    handleSwitch(isDark);
+  }, []);
 
   const items: MenuProps["items"] = [
     {
@@ -42,6 +44,18 @@ const NavHeader = () => {
     }
   };
 
+  const handleSwitch = (isDark: boolean) => {
+    if (isDark) {
+      document.documentElement.dataset.theme = "dark";
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.dataset.theme = "light";
+      document.documentElement.classList.remove("dark");
+    }
+    storage.set("isDark", isDark);
+    updateTheme(isDark);
+  };
+
   return (
     <div className={styles.nav}>
       <div className={styles.left}>
@@ -56,13 +70,15 @@ const NavHeader = () => {
             <MenuFoldOutlined style={{ marginRight: "10px" }} />
           )}
         </div>
-        <Breadcrumb items={breadList} />
+        <BreadCrumb />
       </div>
       <div>
         <Switch
-          checkedChildren="Light"
-          unCheckedChildren="Dark"
+          checked={isDark}
+          checkedChildren="Dark"
+          unCheckedChildren="Light"
           style={{ marginRight: "10px" }}
+          onChange={handleSwitch}
         />
         <Dropdown menu={{ items, onClick }} trigger={["click"]}>
           <span className={styles.nickName}>{userInfo.userName}</span>

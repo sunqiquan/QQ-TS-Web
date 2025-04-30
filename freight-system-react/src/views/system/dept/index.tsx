@@ -10,6 +10,7 @@ import { useEffect, useRef } from "react";
 import CreateDept from "./CreateDept";
 import { IAction } from "@/types/modal";
 import { message } from "@/utils/AntdComp";
+import SearchForm from "@/components/SearchForm";
 
 const Department = () => {
   const [form] = useForm();
@@ -114,22 +115,12 @@ const Department = () => {
 
   return (
     <div>
-      <Form form={form} className="search-form" layout="inline">
+      <SearchForm form={form} submit={handleSearch}>
         <Form.Item name="deptName" label="Department">
           <Input placeholder="Please input department" />
         </Form.Item>
+      </SearchForm>
 
-        <Form.Item>
-          <Space>
-            <Button type="primary" onClick={handleSearch}>
-              Search
-            </Button>
-            <Button type="default" onClick={() => form.resetFields()}>
-              Reset
-            </Button>
-          </Space>
-        </Form.Item>
-      </Form>
       <div className="table-container">
         <div className="table-header">
           <div className="title">Department List</div>

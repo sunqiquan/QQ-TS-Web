@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * utility functions encapsulated
  */
@@ -92,4 +93,33 @@ export const formatState = (state: number) => {
   if (state === 1) return "Employed";
   if (state === 2) return "Trial Period";
   if (state === 3) return "Resign";
+};
+
+export const findTreeNode = (
+  tree: Menu.MenuItem[],
+  pathName: string,
+  path: string[]
+): string[] => {
+  if (!tree) return [];
+  for (const data of tree) {
+    path.push(data.menuName);
+    if (data.path === pathName) return path;
+    if (data.children?.length) {
+      const list = findTreeNode(data.children, pathName, path);
+      if (list?.length) return list;
+    }
+    path.pop();
+  }
+  return [];
+};
+
+export const searchRoute: any = (path: string, routes: any = []) => {
+  for (const item of routes) {
+    if (item.path === path) return item;
+    if (item.children) {
+      const result = searchRoute(path, item.children);
+      if (result) return result;
+    }
+  }
+  return "";
 };

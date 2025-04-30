@@ -1,7 +1,11 @@
 import { create } from "zustand";
 import { User } from "@/types/api";
+import storage from "@/utils/storage";
 
 interface UseStore {
+  isDark: boolean;
+  updateTheme: (isDark: boolean) => void;
+
   collapsed: boolean;
   updateCollapsed: () => void;
 
@@ -13,6 +17,9 @@ interface UseStore {
 }
 
 export const useStore = create<UseStore>((set) => ({
+  isDark: storage.get("isDark") || false,
+  updateTheme: (isDark: boolean) => set({ isDark }),
+
   collapsed: false,
   updateCollapsed: () => set((state) => ({ collapsed: !state.collapsed })),
 

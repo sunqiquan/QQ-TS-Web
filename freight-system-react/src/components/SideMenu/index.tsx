@@ -7,22 +7,36 @@ import {
   MenuOutlined,
 } from "@ant-design/icons";
 import styles from "./index.module.less";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useShallow } from "zustand/react/shallow";
 import { useStore } from "@/store";
+import { useEffect, useState } from "react";
 
 const SideMenu = () => {
+  const { pathname } = useLocation();
   const navigate = useNavigate();
-  const collapsed = useStore(useShallow((state) => state.collapsed));
+  const { isDark, collapsed } = useStore(
+    useShallow((state) => ({
+      isDark: state.isDark,
+      collapsed: state.collapsed,
+    }))
+  );
+
+  const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
+  const handleClickMenu = ({ key }: { key: string }) => {
+    setSelectedKeys([key]);
+    navigate(key);
+  };
+
+  useEffect(() => {
+    setSelectedKeys([pathname]);
+  }, []);
 
   const items = [
     {
-      key: "workbench",
+      key: "/workbench",
       icon: <DesktopOutlined />,
       label: "Workbench",
-      onClick: () => {
-        navigate("/workbench");
-      },
     },
     {
       key: "system",
@@ -30,49 +44,36 @@ const SideMenu = () => {
       label: "System Manage",
       children: [
         {
-          key: "user",
+          key: "/userlist",
           label: "User Manage",
           icon: <UserOutlined />,
-          onClick: () => {
-            navigate("/userlist");
-          },
         },
         {
-          key: "dept",
+          key: "/deptlist",
           label: "Dept Manage",
           icon: <ProfileOutlined />,
-          onClick: () => {
-            navigate("/deptlist");
-          },
         },
         {
-          key: "menu",
+          key: "/menulist",
           label: "Menu Manage",
           icon: <MenuOutlined />,
-          onClick: () => {
-            navigate("/menulist");
-          },
         },
       ],
     },
   ];
 
   return (
-    <div>
-      <div
-        className={styles.logo}
-        onClick={() => {
-          navigate("/welcome");
-        }}
-      >
+    <div className={styles.navSide}>
+      <div className={styles.logo}>
         <img src="/imgs/logo.png" />
         {collapsed ? " " : <span>Freight System</span>}
       </div>
       <Menu
-        defaultSelectedKeys={["workbench"]}
+        selectedKeys={selectedKeys}
         mode="inline"
-        theme="dark"
+        theme={isDark ? "light" : "dark"}
         items={items}
+        onClick={handleClickMenu}
       />
     </div>
   );

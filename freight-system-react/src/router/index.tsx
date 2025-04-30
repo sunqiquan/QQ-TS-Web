@@ -1,14 +1,12 @@
 import { Navigate } from "react-router-dom";
-import Welcome from "@/views/welcome";
 import Login from "@/views/login";
 import UnAuthorize from "@/views/UnAuthorize";
 import NotFound from "@/views/NotFound";
 import Layout from "@/layout";
-import Workbench from "@/views/workbench";
-import UserList from "@/views/system/user/user-ahooks";
-import Department from "@/views/system/dept";
-import Menu from "@/views/system/menu";
 import AuthLoader from "./AuthLoader";
+import React from "react";
+import Workbench from "@/views/workbench";
+import { lazyLoad } from "./LazyLoad";
 
 const routes = [
   {
@@ -18,23 +16,23 @@ const routes = [
     children: [
       {
         path: "/welcome",
-        element: <Welcome />,
-      },
-      {
-        path: "/workbench",
         element: <Workbench />,
       },
       {
+        path: "/workbench",
+        element: lazyLoad(React.lazy(() => import("@/views/workbench"))),
+      },
+      {
         path: "/userlist",
-        element: <UserList />,
+        element: lazyLoad(React.lazy(() => import("@/views/system/user"))),
       },
       {
         path: "/deptlist",
-        element: <Department />,
+        element: lazyLoad(React.lazy(() => import("@/views/system/dept"))),
       },
       {
         path: "/menulist",
-        element: <Menu />,
+        element: lazyLoad(React.lazy(() => import("@/views/system/menu"))),
       },
     ],
   },

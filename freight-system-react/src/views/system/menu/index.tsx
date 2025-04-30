@@ -9,6 +9,7 @@ import { ColumnsType } from "antd/es/table";
 import { message } from "@/utils/AntdComp";
 import { formatDateTime } from "@/utils";
 import CreateMenu from "./CreateMenu";
+import SearchForm from "@/components/SearchForm";
 
 export default function MenuList() {
   const [form] = useForm();
@@ -28,10 +29,6 @@ export default function MenuList() {
   const getMenuList = async () => {
     const data = await api.getMenuList(form.getFieldsValue());
     setDataSource(data);
-  };
-
-  const handleReset = () => {
-    form.resetFields();
   };
 
   const handleCreate = () => {
@@ -142,10 +139,9 @@ export default function MenuList() {
   ];
   return (
     <div>
-      <Form
-        className="search-form"
-        layout="inline"
+      <SearchForm
         form={form}
+        submit={getMenuList}
         initialValues={{ menuState: 1 }}
       >
         <Form.Item label="Menu Name" name="menuName">
@@ -157,17 +153,8 @@ export default function MenuList() {
             <Select.Option value={2}>Disable</Select.Option>
           </Select>
         </Form.Item>
-        <Form.Item>
-          <Space>
-            <Button type="primary" onClick={getMenuList}>
-              Search
-            </Button>
-            <Button type="default" onClick={handleReset}>
-              Reset
-            </Button>
-          </Space>
-        </Form.Item>
-      </Form>
+      </SearchForm>
+
       <div className="table-container">
         <div className="table-header">
           <div className="title">Menu List</div>

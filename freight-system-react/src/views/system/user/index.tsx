@@ -8,6 +8,7 @@ import api from "@/api";
 import CreateUser from "./CreateUser";
 import { IAction } from "@/types/modal";
 import { message } from "@/utils/AntdComp";
+import SearchForm from "@/components/SearchForm";
 
 const UserListFC = () => {
   const userRef = useRef<{
@@ -151,10 +152,9 @@ const UserListFC = () => {
   ];
   return (
     <div>
-      <Form
+      <SearchForm
         form={form}
-        className="search-form"
-        layout="inline"
+        submit={handleSearch}
         initialValues={{ state: 0 }}
       >
         <Form.Item name="userId" label="User ID">
@@ -171,17 +171,8 @@ const UserListFC = () => {
             <Select.Option value={3}>Resign</Select.Option>
           </Select>
         </Form.Item>
-        <Form.Item>
-          <Space>
-            <Button type="primary" onClick={handleSearch}>
-              Search
-            </Button>
-            <Button type="default" onClick={() => form.resetFields()}>
-              Reset
-            </Button>
-          </Space>
-        </Form.Item>
-      </Form>
+      </SearchForm>
+
       <div className="table-container">
         <div className="table-header">
           <div className="title">User List</div>
